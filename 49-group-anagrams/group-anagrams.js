@@ -11,7 +11,7 @@ var groupAnagrams = function(strs) {
         }
         let key = count.join('-');
         if (!result.has(key)) {
-            result.set(key, []); // Initialize an empty array for the key if it doesn't exist
+            result.set(key, []); 
         }
         result.get(key).push(str);
     }
