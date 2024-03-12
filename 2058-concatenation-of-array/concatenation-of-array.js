@@ -11,10 +11,11 @@
 // };
 
 var getConcatenation = function(nums) {
-    const result = [];
-    for(let i= 0;  i< nums.length; i++) {
-        result[i] = nums[i];
-        result [i + nums.length] = nums[i]
+    var ans = [];
+    for (var i = 0; i < 2; i++) {
+        for (var n of nums) {
+            ans.push(n);
+        }
     }
-    return result;
-};
+    return ans;
+    };
