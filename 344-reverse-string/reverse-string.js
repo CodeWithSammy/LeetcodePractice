@@ -3,6 +3,18 @@
  * @return {void} Do not return anything, modify s in-place instead.
  */
 var reverseString = function(s) {
-     let strRev =s.reverse();
-    return strRev;
+    let start =0;
+    let end  =s.length-1;
+   while(start<=end){
+       [s[start],s[end]]=[s[end],s[start]]
+   start++
+   end--
+    }
 };
+
+
+
+// var reverseString = function(s) {
+//      let strRev =s.reverse();
+//     return strRev;
+// };
