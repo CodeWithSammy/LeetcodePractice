@@ -5,27 +5,30 @@
  */
 var insert = function(intervals, newInterval) {
     const result = [];
-    let i = 0;
-    
-    // Add intervals that end before newInterval starts
-    while (i < intervals.length && intervals[i][1] < newInterval[0]) {
-        result.push(intervals[i]);
-        i++;
+
+    for (let i = 0; i < intervals.length; i++) {
+        // If the end of newInterval is less than the start of current interval
+        // Add newInterval and rest of intervals
+        if (newInterval[1] < intervals[i][0]) {
+            result.push(newInterval);
+            return result.concat(intervals.slice(i));
+        } 
+        // If the start of newInterval is greater than the end of current interval
+        // Add current interval as it is
+        else if (newInterval[0] > intervals[i][1]) {
+            result.push(intervals[i]);
+        } 
+        // If there's an overlap between newInterval and current interval
+        // Update newInterval to cover both intervals
+        else {
+            newInterval = [
+                Math.min(newInterval[0], intervals[i][0]),
+                Math.max(newInterval[1], intervals[i][1])
+            ];
+        }
     }
-    
-    // Merge overlapping intervals
-    while (i < intervals.length && intervals[i][0] <= newInterval[1]) {
-        newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
-        newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
-        i++;
-    }
+
+    // Add the final merged interval
     result.push(newInterval);
-    
-    // Add remaining intervals
-    while (i < intervals.length) {
-        result.push(intervals[i]);
-        i++;
-    }
-    
     return result;
 };
