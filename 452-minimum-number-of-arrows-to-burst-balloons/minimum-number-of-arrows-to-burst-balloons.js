@@ -2,6 +2,12 @@
  * @param {number[][]} points
  * @return {number}
  */
+
+// sort the array in ascending order, then
+// check start end of each subarray and , and merge the overlapping array
+// if so the we can shoot 1 arrow for 2 arrays
+
+
 var findMinArrowShots = function (points) {
     points.sort((a, b) => a[0] - b[0]);
     let countOfArrows = points.length;
