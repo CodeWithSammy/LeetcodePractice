@@ -48,22 +48,27 @@ function leastInterval(tasks, n) {
 // This approach also has a time complexity of O(n log n) due to sorting.
 
 
-// function leastInterval(tasks, n) {
+// function leastIntervalApproach2(tasks, n) {
+//     // Step 1: Count the frequency of each task
 //     const frequency = new Array(26).fill(0);
 //     for (const task of tasks) {
 //         frequency[task.charCodeAt(0) - 'A'.charCodeAt(0)]++;
 //     }
     
+//     // Step 2: Sort the tasks by frequency in descending order
 //     frequency.sort((a, b) => b - a);
     
+//     // Step 3: Calculate the maximum frequency and idle slots
 //     let maxFrequency = frequency[0];
 //     let idleSlots = (maxFrequency - 1) * n;
     
+//     // Step 4: Iterate through frequencies to distribute idle slots
 //     for (let i = 1; i < frequency.length && idleSlots > 0; i++) {
 //         idleSlots -= Math.min(frequency[i], maxFrequency - 1);
 //     }
     
+//     // Step 5: Return the total number of intervals
 //     idleSlots = Math.max(0, idleSlots);
-    
 //     return tasks.length + idleSlots;
 // }
+
