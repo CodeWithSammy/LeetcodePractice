@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-var majorityElement = function(nums) {
+var majorityElement = function (nums) {
     let candidate1 = null, candidate2 = null;
     let count1 = 0, count2 = 0;
 
@@ -23,7 +23,7 @@ var majorityElement = function(nums) {
             count2--;
         }
     }
-    
+
     // Second pass: Verifying potential candidates
     count1 = count2 = 0;
     for (let num of nums) {
@@ -33,12 +33,18 @@ var majorityElement = function(nums) {
             count2++;
         }
     }
-    
+
     const result = [];
     const n = nums.length;
     if (count1 > n / 3) result.push(candidate1);
     if (count2 > n / 3) result.push(candidate2);
-    
+
     return result;
 };
 
+// using Boyer-Moore Majority Vote algorithm.
+// 
+// The Boyer-Moore Majority Vote algorithm is a method for finding the majority element 
+// in an array efficiently by iteratively canceling out pairs of distinct elements.
+//  In the context of this problem, it helps identify the potential candidates 
+// for majority elements by maintaining two candidates and their respective counts.
