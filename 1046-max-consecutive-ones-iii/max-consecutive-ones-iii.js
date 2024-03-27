@@ -4,20 +4,19 @@
  * @return {number}
  */
 var longestOnes = function (nums, k) {
-    let i = 0;
-    let j = 0;
-    while (i < nums.length) {
-        if (nums[i] == 0) {
+    let start = 0;
+    let end = 0;
+    while (start < nums.length) {
+        if (nums[start] == 0) {
             k--;
         }
         if (k < 0) {
-            if (nums[j] == 0) {
+            if (nums[end] == 0) {
                 k++;
             }
-            j++
+            end++
         }
-        i++
+        start++
     }
-    return i - j
-
+    return start - end;
 };
