@@ -4,15 +4,13 @@
  * @return {number}
  */
 var numWaterBottles = function(numBottles, numExchange) {
-    let maxDrink = numBottles;
-    let remainder =0;
-    while( numBottles >= numExchange ){
-        remainder = numBottles % numExchange;
-        numBottles = Math.floor(numBottles / numExchange);
-        maxDrink += numBottles;
-        numBottles += remainder;
+    let drinked = 0;
+    while (numBottles >= numExchange) {
+        const exchange = Math.floor(numBottles / numExchange);
+        drinked += exchange * numExchange;
+        numBottles = exchange + numBottles % numExchange;
     }
-    return maxDrink
+    return drinked + numBottles;
 };
 
 /*
