@@ -3,6 +3,9 @@
  * @param {number} k
  * @return {number}
  */
+
+
+//  used sliding window approach to solve this problem
 var maxSubarrayLength = function (nums, k) {
     let ans = 0;
     let start = -1;
