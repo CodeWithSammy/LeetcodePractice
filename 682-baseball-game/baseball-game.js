@@ -2,38 +2,34 @@
  * @param {string[]} operations
  * @return {number}
  */
-var calPoints = function (operations) {
-    // Initialize an empty stack to store scores
-    let scoreStack = [];
+var calPoints = function(ops) {
+    // Initialize an empty stack
+    let stack = [];
 
-    // Iterate through each operation
-    for (let o of operations) {
-        // If the operation is '+', and the stack has at least 2 elements
-        if (o === '+' && scoreStack.length >= 2) {
-            // Calculate the sum of the last two valid scores
-            let summed = scoreStack[scoreStack.length - 2] + scoreStack[scoreStack.length - 1];
-            // Push the sum onto the stack
-            scoreStack.push(summed);
+    // Iterate through each operation in the array
+    for (let op of ops) {
+        // If the operation is '+'
+        if (op === '+') {
+            // Add the sum of the last two valid points to the stack
+            stack.push(stack[stack.length - 1] + stack[stack.length - 2]);
         }
-        // If the operation is 'D', and the stack has at least 1 element
-        else if (o === 'D' && scoreStack.length >= 1) {
-            // Double the last valid score
-            let doubled = scoreStack[scoreStack.length - 1] * 2;
-            // Push the doubled score onto the stack
-            scoreStack.push(doubled);
+        // If the operation is 'C'
+        else if (op === 'C') {
+            // Remove the last valid point from the stack
+            stack.pop();
         }
-        // If the operation is 'C', and the stack has at least 1 element
-        else if (o === 'C' && scoreStack.length >= 1) {
-            // Remove the last valid score from the stack
-            scoreStack.pop();
+        // If the operation is 'D'
+        else if (op === 'D') {
+            // Double the last valid point and add it to the stack
+            stack.push(2 * stack[stack.length - 1]);
         }
         // If the operation is a number
         else {
-            // Convert the operation to a number and push it onto the stack
-            scoreStack.push(parseInt(o));
+            // Convert the operation to an integer and add it to the stack
+            stack.push(parseInt(op));
         }
     }
 
-    // Return the sum of all scores in the stack
-    return scoreStack.reduce((acc, cur) => acc + cur, 0);
+    // Return the sum of all valid points in the stack
+    return stack.reduce((acc, curr) => acc + curr, 0);
 };
