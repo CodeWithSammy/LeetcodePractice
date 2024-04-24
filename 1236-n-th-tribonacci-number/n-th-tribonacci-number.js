@@ -6,13 +6,20 @@
  * @param {number} n
  * @return {number}
  */
+/**
+* @param {number} n
+* @return {number}
+*/
 var tribonacci = function(n) {
-    if (mem[n] !== undefined) return mem[n];
-    return mem[n] = tribonacci(n - 1) + tribonacci(n - 2) + tribonacci(n - 3);
+   if (mem[n] !== undefined) return mem[n];
+   for (let i = 3; i <= n; i++) {
+       mem[i] = mem[i - 1] + mem[i - 2] + mem[i - 3];
+   }
+   return mem[n];
 };
 
 const mem = {
-    0: 0,
-    1: 1,
-    2: 1
+   0: 0,
+   1: 1,
+   2: 1
 };
