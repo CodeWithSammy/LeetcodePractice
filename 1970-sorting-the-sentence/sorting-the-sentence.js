@@ -16,3 +16,11 @@ var sortSentence = function(s) {
     // Step 3: Remove the numbers from the last position of each word and join the words array again
     return words.map(word => word.slice(0, -1)).join(" ");
 };
+/*
+my approach/intution:-
+1. convert the sentence into array of words
+2. sort the words array according to the number 
+   in the last position of the word
+3. after  sorting remove the numbers from the last 
+   position and join the words array again
+*/
