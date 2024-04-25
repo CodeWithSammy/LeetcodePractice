@@ -10,16 +10,18 @@
 * @param {number} n
 * @return {number}
 */
-var tribonacci = function(n) {
-   if (mem[n] !== undefined) return mem[n];
-   for (let i = 3; i <= n; i++) {
-       mem[i] = mem[i - 1] + mem[i - 2] + mem[i - 3];
-   }
-   return mem[n];
+var tribonacci = function (n) {
+    let t = [0, 1, 1];
+
+    if (n < 3) return t[n];
+
+    for (let i = 3; i < n + 1; i++) {
+        [t[0], t[1], t[2]] = [t[1], t[2], sum(t)];
+    }
+
+    return t[2];
 };
 
-const mem = {
-   0: 0,
-   1: 1,
-   2: 1
-};
+function sum(arr) {
+    return arr.reduce((a, b) => a + b);
+}
