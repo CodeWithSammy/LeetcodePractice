@@ -23,4 +23,7 @@ my approach/intution:-
    in the last position of the word
 3. after  sorting remove the numbers from the last 
    position and join the words array again
+
+   time complexity O(nlogn)
+   space complexity O(n)
 */
