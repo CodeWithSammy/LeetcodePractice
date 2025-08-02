@@ -4,8 +4,7 @@
  * @return {number}
  */
 /**
- * Take heed, good sir: this function doth compute the minimal cost
- * to make thy two baskets equal. Return –1 should the task be unfeasible.
+
  *
  * @param {number[]} basket1
  * @param {number[]} basket2
