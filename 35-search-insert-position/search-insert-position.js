@@ -3,23 +3,15 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
-    let start =0;
-    let end = nums.length -1;
-    
-    while(start <= end){
-        let mid = Math.floor(start + (end - start) / 2);
-        if(target < nums[mid]){
-            //search in left
-            end = mid - 1;
-        }else if( target > nums[mid]){
-            //search in right
-            start = mid + 1;
-        }else{
-            //this means mid == target
-            //answer found
-            return mid;
-        }
+var searchInsert = function (nums, target) {
+    let left = 0, right = nums.length - 1;
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        if (nums[mid] === target) return mid;
+        else if (nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
     }
-    return start;
+    return left;
 };
+
+//exactly the same binary search but instead of returning the -1 we return left
