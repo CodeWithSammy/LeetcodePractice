@@ -1,17 +1,19 @@
-/**
- * @param {number[]} prices
- * @return {number}
- */
-var maxProfit = function(prices) {
+var maxProfit = function (prices) {
+    let left = 0; // buy day
+    let right = 1; // sell day
     let maxProfit = 0;
-    let buy = 0,
-    sell = 1; 
-    while( sell < prices.length){
-        if( prices[buy] > prices[sell]){
-            buy = sell;
+
+    while (right < prices.length) {
+        if (prices[right] > prices[left]) {
+            // profitable transaction
+            let profit = prices[right] - prices[left];
+            maxProfit = Math.max(maxProfit, profit);
+        } else {
+            // found a cheaper price, update buy day
+            left = right;
         }
-        maxProfit = Math.max(maxProfit, prices[sell]- prices[buy])
-        sell++;
+        right++;
     }
+
     return maxProfit;
 };
