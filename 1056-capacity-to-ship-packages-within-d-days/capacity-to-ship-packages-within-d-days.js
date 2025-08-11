@@ -1,4 +1,9 @@
-function shipWithinDays(weights, days) {
+/**
+ * @param {number[]} weights
+ * @param {number} days
+ * @return {number}
+ */
+var shipWithinDays = function (weights, days) {
     // Step 1: Find the minimum and maximum possible capacity
     let left = Math.max(...weights); // Min capacity = heaviest package
     let right = weights.reduce((sum, w) => sum + w, 0); // Max capacity = sum of all weights
@@ -30,3 +35,4 @@ function shipWithinDays(weights, days) {
     // Step 5: Return the minimal working capacity
     return left;
 }
+
